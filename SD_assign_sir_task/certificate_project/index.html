@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>certificate-generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <input type="text" id="nameInput" placeholder="ENTER">
+    <input type="number" id="donationInput" placeholder="ENTER(in Rs.)">
+    <input type="text" id="dateInput" placeholder="Submit Date" readonly>
+    <button id="generateButton">Generate Certificate</button>
+</div>
+
+<div class="certificate" id="certificate">
+    <H1>Participation Certificate</H1>
+    <p>This is to Certify that</p>
+    <h2 id="certificateName"></h2>
+    <p> has participated in the event and has donated </p>
+    <h2 id="certificateDonation">(is Rs.)</h2>
+
+    <p>Thank you for your contribution!</p>
+    <p>Submission Date and Time:</p>
+    <h3 id="certificateDate"></h3>
+
+<br>
+<br>
+
+<div class="signature-row">
+    <div class="sign1-box">
+        <div class="sign1-line"></div>
+        <p class ="sign1-name">Name1</p>
+        <p >Designation</p>
+    </div>
+
+    <div class="sign2-box">
+        <div class="sign2-line"></div>
+        <p class="sign2-name">Name2</p>
+        <p>Designation</p>
+        </div>
+</div>
+</div>
+<script src="certificate.js"></script>
+</body>
+</html>
