@@ -66,3 +66,28 @@ Option 2 (recommended for development):
 
 - The date input is read-only and managed by JavaScript.
 - The current date/time format uses the browser locale via toLocaleString().
+
+## Progress Till Now
+
+### 1) Initial Screen (Before Certificate Generation)
+
+![Initial screen](docs/screenshots/before.png)
+
+### 2) Generated Certificate Screen
+
+![Generated certificate](docs/screenshots/generated.png)
+
+### What Is Completed
+
+- Certificate form UI with name, donation, and submit date input.
+- Auto date-time fill at the time of submission.
+- Certificate container hidden by default and shown on click.
+- Signature placeholders added inside certificate.
+- Styling for certificate card and responsive input layout.
+
+### Screenshot File Placement
+
+Place your two screenshot files in:
+
+- docs/screenshots/before.png
+- docs/screenshots/generated.png
