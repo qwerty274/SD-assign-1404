@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanBru - Billing System</title>
+</head>
+<body>
+<div class="app">
+    <header>
+        <h1> Urban Bru</h1>
+        <p>Cafe Billing System</p>
+
+    </header>
+    <main>
+        <section class="product-selector">
+            <div class="product-selector">
+                <label for="productSelect">
+                    Select Product:
+                </label>
+                <select id="productSelect">
+                    <option value="">--Select a product--</option>
+                </select>
+                <!-- Quantity controls -->
+<div class="quantity-control">
+    <label for="quantity">Quantity:</label>
+    <button id="decreaseQty">−</button>
+    <span id="quantity">1</span>
+    <button id="increaseQty">+</button>
+</div>
+
+<!-- Add selected product to bill -->
+<button id="addToBill">Add to Bill</button>
+            </div>
+        </section>
+        <section class="bill-selection">
+            <h2> Current Bill</h2>
+            <div id="billItems">
+
+            </div>
+        </section>
+        <section class="bill-summary">
+            <h2>Bill Summary</h2>
+            <p>Subtotal: <span id="subtotal">₹0.00</span></p>
+            <p>Discount <span id="discount">₹0.00</span></p>
+            <p>GST <span id="gst" >₹0.00</span></p>
+            <h3>GrandTotal: <span id="grandTotal">₹0.00</span></h3>
+            <button id="previewBill">Preview Bill</button>
+            </section>
+    </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

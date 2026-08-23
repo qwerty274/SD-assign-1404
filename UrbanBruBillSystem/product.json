@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Americano",
+        "mrp" : 120,
+        "gst":5,
+        "discount": 0
+    },
+    {
+        "name": "Espresso",
+        "mrp" : 150,
+        "gst":5,
+        "discount": 10
+    },
+    {
+        "name": "Matcha Latte",
+        "mrp" : 180,
+        "gst":5,
+        "discount": 0
+    }
+]
