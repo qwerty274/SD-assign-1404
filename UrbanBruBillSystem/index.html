@@ -1,54 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UrbanBru - Billing System</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+    @media print {
+        .product-selector,
+        .bill-selection,
+        .bill-summary > h2,
+        .bill-summary > p,
+        .bill-summary > h3,
+        #previewBill,
+        #printBill {
+            display: none !important;
+        }
+
+        #billPreview {
+            display: block !important;
+        }
+    }
+</style>
 </head>
+
 <body>
-<div class="app">
-    <header>
-        <h1> Urban Bru</h1>
-        <p>Cafe Billing System</p>
 
-    </header>
-    <main>
-        <section class="product-selector">
-            <div class="product-selector">
-                <label for="productSelect">
-                    Select Product:
-                </label>
-                <select id="productSelect">
-                    <option value="">--Select a product--</option>
-                </select>
-                <!-- Quantity controls -->
-<div class="quantity-control">
-    <label for="quantity">Quantity:</label>
-    <button id="decreaseQty">−</button>
-    <span id="quantity">1</span>
-    <button id="increaseQty">+</button>
-</div>
+    <div class="app">
 
-<!-- Add selected product to bill -->
-<button id="addToBill">Add to Bill</button>
-            </div>
-        </section>
-        <section class="bill-selection">
-            <h2> Current Bill</h2>
-            <div id="billItems">
+        <header>
+            <h1>Urban Bru</h1>
+            <p>Cafe Billing System</p>
+        </header>
 
-            </div>
-        </section>
-        <section class="bill-summary">
-            <h2>Bill Summary</h2>
-            <p>Subtotal: <span id="subtotal">₹0.00</span></p>
-            <p>Discount <span id="discount">₹0.00</span></p>
-            <p>GST <span id="gst" >₹0.00</span></p>
-            <h3>GrandTotal: <span id="grandTotal">₹0.00</span></h3>
-            <button id="previewBill">Preview Bill</button>
+        <main>
+
+            <!-- Product selection -->
+            <section class="product-selector">
+
+                <div class="product-selector">
+
+                    <label for="productSelect">
+                        Select Product:
+                    </label>
+
+                    <select id="productSelect">
+                        <option value="">--Select a product--</option>
+                    </select>
+
+                    <!-- Add selected product to bill -->
+                    <button id="addToBill">
+                        Add to Bill
+                    </button>
+
+                </div>
+
             </section>
-    </main>
-</div>
-<script src="script.js"></script>
+
+
+            <!-- Current bill -->
+            <section class="bill-selection">
+
+                <h2>Current Bill</h2>
+
+                <div id="billItems"></div>
+
+            </section>
+
+
+            <!-- Bill summary -->
+            <section class="bill-summary">
+
+                <h2>Bill Summary</h2>
+
+                <p>
+                    Subtotal:
+                    <span id="subtotal">₹0.00</span>
+                </p>
+
+                <p>
+                    Discount:
+                    <span id="discount">₹0.00</span>
+                </p>
+
+                <p>
+                    GST:
+                    <span id="gst">₹0.00</span>
+                </p>
+
+                <h3>
+                    Grand Total:
+                    <span id="grandTotal">₹0.00</span>
+                </h3>
+
+                <button id="previewBill">
+                    Preview Bill
+                </button>
+                <!-- Formal bill preview -->
+<section id="billPreview" style="display: none;">
+
+    <h2>Urban Bru</h2>
+
+    <p>Cafe Bill / Invoice</p>
+
+    <div id="previewItems"></div>
+
+    <hr>
+
+    <p>
+        Subtotal:
+        <span id="previewSubtotal">₹0.00</span>
+    </p>
+
+    <p>
+        Discount:
+        <span id="previewDiscount">₹0.00</span>
+    </p>
+
+    <p>
+        GST:
+        <span id="previewGST">₹0.00</span>
+    </p>
+
+    <h3>
+        Grand Total:
+        <span id="previewGrandTotal">₹0.00</span>
+    </h3>
+    <button id="printBill" >Print Bill</button>
+
+
+</section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>

@@ -1,20 +1,92 @@
 [
     {
         "name": "Americano",
-        "mrp" : 120,
-        "gst":5,
+        "mrp": 120,
+        "gst": 5,
         "discount": 0
     },
     {
         "name": "Espresso",
-        "mrp" : 150,
-        "gst":5,
+        "mrp": 150,
+        "gst": 5,
         "discount": 10
     },
     {
         "name": "Matcha Latte",
-        "mrp" : 180,
-        "gst":5,
+        "mrp": 180,
+        "gst": 5,
+        "discount": 0
+    },
+    {
+        "name": "Cappuccino",
+        "mrp": 170,
+        "gst": 5,
+        "discount": 5
+    },
+    {
+        "name": "Cafe Latte",
+        "mrp": 180,
+        "gst": 5,
+        "discount": 0
+    },
+    {
+        "name": "Flat White",
+        "mrp": 190,
+        "gst": 5,
+        "discount": 10
+    },
+    {
+        "name": "Mocha",
+        "mrp": 210,
+        "gst": 5,
+        "discount": 5
+    },
+    {
+        "name": "Cold Brew",
+        "mrp": 200,
+        "gst": 5,
+        "discount": 0
+    },
+    {
+        "name": "Iced Americano",
+        "mrp": 160,
+        "gst": 5,
+        "discount": 0
+    },
+    {
+        "name": "Iced Latte",
+        "mrp": 200,
+        "gst": 5,
+        "discount": 10
+    },
+    {
+        "name": "Irish Coffee",
+        "mrp": 260,
+        "gst": 5,
+        "discount": 0
+    },
+    {
+        "name": "Caramel Macchiato",
+        "mrp": 230,
+        "gst": 5,
+        "discount": 5
+    },
+    {
+        "name": "Turkish Coffee",
+        "mrp": 220,
+        "gst": 5,
+        "discount": 0
+    },
+    {
+        "name": "Filter Coffee",
+        "mrp": 100,
+        "gst": 5,
+        "discount": 5
+    },
+    {
+        "name": "Affogato",
+        "mrp": 240,
+        "gst": 5,
         "discount": 0
     }
 ]
