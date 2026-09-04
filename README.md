@@ -18,6 +18,9 @@ SD/
 │  └─ style.css
 ├─ docs/
 │  └─ screenshots/
+│     ├─ urbanbru-empty-bill.png
+│     ├─ urbanbru-populated-bill.png
+│     └─ urbanbru-preview.png
 └─ README.md
 ```
 
@@ -63,6 +66,18 @@ Project entry points:
 4. Select **Preview Bill** to review the invoice.
 5. Select **Print Bill** to print the final bill.
 
-## Screenshots
+### UrbanBru Screenshots
 
-Project screenshots are stored in `docs/screenshots/`.
+#### Empty Bill
+
+![UrbanBru empty bill](docs/screenshots/urbanbru-empty-bill.png)
+
+#### Populated Bill
+
+![UrbanBru populated bill](docs/screenshots/urbanbru-populated-bill.png)
+
+#### Bill Preview
+
+![UrbanBru bill preview](docs/screenshots/urbanbru-preview.png)
+
+Certificate generator screenshots are also stored in `docs/screenshots/`.
