@@ -1,93 +1,68 @@
-# SD-assign-1404
+# SD Assign 1404
 
-This repository contains practice work and assignment files for SD.
+This repository contains two standalone front-end projects built with HTML, CSS, and vanilla JavaScript.
 
 ## Repository Structure
 
 ```text
 SD/
-├─ mydaywiselearning/
-│  ├─ day1.html
-│  └─ day1.js
-├─ SD_assign_sir_task/
-│  ├─ index.html
+├─ certificate_generator/
 │  └─ certificate_project/
+│     ├─ certificate.js
 │     ├─ index.html
-│     ├─ style.css
-│     └─ certificate.js
+│     └─ style.css
+├─ UrbanBruBillSystem/
+│  ├─ index.html
+│  ├─ product.json
+│  ├─ script.js
+│  └─ style.css
+├─ docs/
+│  └─ screenshots/
 └─ README.md
 ```
 
 ## Projects
 
-### 1) Day 1 Learning
+### Certificate Generator
 
-Location: mydaywiselearning
+Location: `certificate_generator/certificate_project`
 
-- day1.html: Simple student page with heading and submit button.
-- day1.js: Adds a click event on the button and shows an alert.
+The certificate generator collects a participant name and donation amount, adds the current submission date and time, and displays a printable certificate with signature placeholders. The certificate can also be downloaded as an image.
 
-### 2) Certificate Generator
+### Urban Bru Billing System
 
-Location: SD_assign_sir_task/certificate_project
+Location: `UrbanBruBillSystem`
 
-- index.html: Form fields, certificate layout, signature placeholders.
-- style.css: Styling for form, certificate card, and responsive layout.
-- certificate.js: Handles form submission, populates certificate values, sets current date and time, and displays the certificate.
-
-## Certificate Generator Features
-
-- Input fields for participant name and donation amount.
-- Submit date and time is auto-filled at submission time.
-- Certificate is hidden initially and shown only after clicking Generate Certificate.
-- Two signature placeholder sections are included at the bottom.
+The cafe billing system loads products from `product.json`, adds products to a bill, tracks quantities, applies product discounts and GST, calculates totals, previews the invoice, and supports printing.
 
 ## How to Run
 
-Option 1:
-- Open SD_assign_sir_task/certificate_project/index.html in a browser.
+Both projects can be opened directly in a browser. For the billing system, using a local server is recommended so that `product.json` loads correctly.
 
-Option 2 (recommended for development):
-- Open this repository in VS Code.
-- Use Live Server or Five Server to run SD_assign_sir_task/certificate_project/index.html.
+1. Open the repository in VS Code.
+2. Open the project folder you want to run.
+3. Open its `index.html` with Live Server, Five Server, or another local HTTP server.
 
-## Usage Flow (Certificate Generator)
+Project entry points:
 
-1. Enter participant name.
-2. Enter donation amount.
-3. Click Generate Certificate.
-4. The app displays:
-	- Name
-	- Donation amount
-	- Current submission date and time
-5. Certificate card becomes visible with signature placeholders.
+- `certificate_generator/certificate_project/index.html`
+- `UrbanBruBillSystem/index.html`
 
-## Notes
+## Certificate Generator Usage
 
-- The date input is read-only and managed by JavaScript.
-- The current date/time format uses the browser locale via toLocaleString().
+1. Enter the participant name.
+2. Enter the donation amount.
+3. Select **Generate Certificate**.
+4. Review the generated certificate and select **Download Certificate** to save it.
 
-## Progress Till Now
+## Urban Bru Usage
 
-### 1) Initial Screen (Before Certificate Generation)
+1. Select a product from the product list.
+2. Select **Add to Bill**.
+3. Adjust quantities or remove items as needed.
+4. Select **Preview Bill** to review the invoice.
+5. Select **Print Bill** to print the final bill.
 
-![Initial screen](docs/screenshots/before.png)
+## Screenshots
 
-### 2) Generated Certificate Screen
-
-![Generated certificate](docs/screenshots/generated.png)
-
-### What Is Completed
-
-- Certificate form UI with name, donation, and submit date input.
-- Auto date-time fill at the time of submission.
-- Certificate container hidden by default and shown on click.
-- Signature placeholders added inside certificate.
-- Styling for certificate card and responsive input layout.
-
-### Screenshot File Placement
-
-Place your two screenshot files in:
-
-- docs/screenshots/before.png
-- docs/screenshots/generated.png
+Project screenshots are stored in `docs/screenshots/`.
