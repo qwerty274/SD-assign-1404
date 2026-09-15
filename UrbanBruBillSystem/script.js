@@ -18,10 +18,67 @@ const previewBillButton = document.getElementById("previewBill");
 const billPreview = document.getElementById("billPreview");
 const previewItems = document.getElementById("previewItems");
 
-const printBillButton = document.getElementById("printBill");
+const downloadBillButton = document.getElementById("downloadBill");
 
-printBillButton.addEventListener("click", function () {
-    window.print();
+downloadBillButton.addEventListener("click", function () {
+    if (bill.length === 0) {
+        alert("Please add at least one product before downloading the bill.");
+        return;
+    }
+
+    const totals = calculateTotals();
+    const itemRows = bill.map(item => {
+        const productSubtotal = item.product.mrp * item.quantity;
+        const discountAmount = (item.product.discount / 100) * productSubtotal;
+        const taxableAmount = productSubtotal - discountAmount;
+        const gstAmount = taxableAmount * (item.product.gst / 100);
+        const totalAmount = taxableAmount + gstAmount;
+
+        return `
+            <tr>
+                <td>${item.product.name}</td>
+                <td>${item.quantity}</td>
+                <td>₹${totalAmount.toFixed(2)}</td>
+            </tr>`;
+    }).join("");
+
+    const billHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Urban Bru Bill</title>
+    <style>
+        body { max-width: 720px; margin: 40px auto; padding: 0 24px; color: #24313b; font-family: Arial, sans-serif; }
+        h1 { color: #17324d; margin-bottom: 4px; }
+        p { color: #697783; }
+        table { width: 100%; border-collapse: collapse; margin: 28px 0; }
+        th, td { padding: 12px 8px; text-align: left; border-bottom: 1px solid #d9e0e5; }
+        th { color: #17324d; }
+        .amount { display: flex; justify-content: space-between; max-width: 320px; margin: 10px 0 10px auto; }
+        .total { padding-top: 14px; border-top: 2px solid #17324d; color: #17324d; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Urban Bru</h1>
+    <p>Cafe Bill / Invoice</p>
+    <table>
+        <thead><tr><th>Product</th><th>Quantity</th><th>Amount</th></tr></thead>
+        <tbody>${itemRows}</tbody>
+    </table>
+    <div class="amount"><span>Subtotal:</span><span>₹${totals.totalSubtotal.toFixed(2)}</span></div>
+    <div class="amount"><span>Discount:</span><span>₹${totals.totalDiscount.toFixed(2)}</span></div>
+    <div class="amount"><span>GST:</span><span>₹${totals.totalGST.toFixed(2)}</span></div>
+    <div class="amount total"><span>Grand Total:</span><span>₹${totals.grandTotal.toFixed(2)}</span></div>
+</body>
+</html>`;
+
+    const billBlob = new Blob([billHtml], { type: "text/html" });
+    const downloadUrl = URL.createObjectURL(billBlob);
+    const downloadLink = document.createElement("a");
+    downloadLink.href = downloadUrl;
+    downloadLink.download = "urban-bru-bill.html";
+    downloadLink.click();
+    URL.revokeObjectURL(downloadUrl);
 });
 
 function calculateTotals() {
