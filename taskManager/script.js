@@ -15,6 +15,8 @@ const priorityInput = document.getElementById('todo-priority');
 
 // Find the container holding the task filter buttons.
 const filters = document.getElementById('filters');
+const historyButton = document.getElementById('history-toggle');
+const chartsSection = document.getElementById('charts');
 
 const priorityChartCanvas = document.getElementById('priority-chart');
 const weeklyChartCanvas = document.getElementById('weekly-chart');
@@ -28,6 +30,7 @@ let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 let priorityChart; // Variable to hold the priority chart instance
 let weeklyChart; // Variable to hold the weekly chart instance
 let chartMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1); // Month currently shown in the weekly chart.
+let historyMode = false; // The main view starts focused on unfinished tasks.
 
 // Save the current task list in browser storage.
 function saveTasks() {
@@ -35,7 +38,7 @@ function saveTasks() {
 }
 
 // Draw tasks that match the selected filter.
-function showTasks(filter = 'all') {
+function showTasks(filter = historyMode ? 'all' : 'active') {
   // Clear the old rows before drawing the current ones.
   list.innerHTML = '';
 
@@ -251,6 +254,16 @@ filters.addEventListener('click', function(event) {
 
   // Redraw the list using the clicked button's filter value.
   showTasks(event.target.dataset.filter);
+});
+
+// Switch between the focused active-task view and full task history.
+historyButton.addEventListener('click', function() {
+  historyMode = !historyMode;
+  historyButton.textContent = historyMode ? 'Back to tasks' : 'History';
+  historyButton.setAttribute('aria-pressed', String(historyMode));
+  filters.hidden = !historyMode;
+  chartsSection.hidden = !historyMode;
+  showTasks(historyMode ? 'all' : 'active');
 });
 function getTodayDate() {
     const today = new Date();

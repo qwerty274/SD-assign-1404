@@ -58,8 +58,14 @@ body > div {
 /* Lay out the task name, date, priority, and add button. */
 #todo-form {
   display: grid;
-  grid-template-columns: minmax(180px, 1fr) 150px 140px auto;
+  grid-template-columns: minmax(150px, 1fr) 135px 120px auto auto;
   gap: 10px;
+}
+
+/* Ensure hidden history controls stay hidden despite layout declarations. */
+#filters[hidden],
+#charts[hidden] {
+  display: none !important;
 }
 
 /* Give form fields a shared height, background, and border. */
@@ -110,6 +116,20 @@ body > div {
 #todo-form button:hover {
   background: var(--accent-hover);
   transform: translateY(-1px);
+}
+
+/* Give the History control a quieter style than the Add task button. */
+#todo-form .history-button {
+  border: 1px solid var(--border);
+  background: var(--panel-raised);
+  color: var(--text);
+}
+
+/* Highlight the History control when hovered. */
+#todo-form .history-button:hover {
+  border-color: var(--accent);
+  background: #41404f;
+  color: white;
 }
 
 /* Show keyboard focus clearly on every button. */

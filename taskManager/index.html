@@ -18,16 +18,17 @@
                 <option value="high">High</option>
             </select>
             <button type="submit">Add task</button>
+            <button id="history-toggle" class="history-button" type="button" aria-pressed="false">History</button>
         </form>
 
-        <div id="filters">
+        <div id="filters" hidden>
   <button type="button" data-filter="all">All</button>
   <button type="button" data-filter="active">Active</button>
   <button type="button" data-filter="done">Done</button>
   <button type="button" data-filter="overdue-task">Overdue Tasks</button>
 </div>
         <ul id="todo-list"></ul>
-        <section id="charts">
+        <section id="charts" hidden>
   <h2>Task overview</h2>
 
   <div class="chart-card">
