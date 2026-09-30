@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Todo List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1> MY TODO LIST</h1>
+    <div>
+        <form id ="todo-form">
+            <input id ='todo-input' type="text" placeholder ="New Task">
+            <input id="todo-date" type="date" aria-label="Task due date">
+            <select id="todo-priority" aria-label="Task priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <button type="submit">Add task</button>
+        </form>
+
+        <div id="filters">
+  <button type="button" data-filter="all">All</button>
+  <button type="button" data-filter="active">Active</button>
+  <button type="button" data-filter="done">Done</button>
+  <button type="button" data-filter="overdue-task">Overdue Tasks</button>
+</div>
+        <ul id="todo-list"></ul>
+        <section id="charts">
+  <h2>Task overview</h2>
+
+  <div class="chart-card">
+    <h3>Tasks by priority</h3>
+    <canvas id="priority-chart"></canvas>
+    <div id="priority-legend"></div>
+  </div>
+
+  <div class="chart-card">
+    <div class="weekly-chart-heading">
+      <h3 id="weekly-chart-title">Tasks completed this month</h3>
+      <div class="month-controls" aria-label="Choose chart month">
+        <button id="previous-month" type="button" aria-label="Show previous month">&#9664;</button>
+        <button id="next-month" type="button" aria-label="Show next month">&#9654;</button>
+      </div>
+    </div>
+    <canvas id="weekly-chart"></canvas>
+  </div>
+</section>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+</html>
+

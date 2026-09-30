@@ -1,0 +1,426 @@
+/* Store the shared colors and shadows used across the page. */
+:root {
+  --page: #202127;
+  --panel: #2b2d35;
+  --panel-raised: #333640;
+  --field: #23252c;
+  --text: #f3f4f8;
+  --muted: #a3a7b3;
+  --accent: #a293ff;
+  --accent-hover: #b1a5ff;
+  --danger: #ff8c95;
+  --border: #454853;
+  --shadow: 0 22px 65px rgba(0, 0, 0, 0.3);
+}
+
+/* Make widths predictable by including padding and borders in element sizes. */
+* {
+  box-sizing: border-box;
+}
+
+/* Set the page background, text color, and default font. */
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 56px 20px;
+  background: radial-gradient(ellipse at 50% 0%, #383944 0, var(--page) 520px);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Make buttons and inputs use the same font as the page. */
+button,
+input,
+select {
+  font: inherit;
+}
+
+/* Style and center the page heading. */
+h1 {
+  max-width: 760px;
+  margin: 0 auto 24px;
+  font-size: clamp(30px, 5vw, 43px);
+  font-weight: 750;
+  letter-spacing: -1.7px;
+}
+
+/* Style the main todo card. */
+body > div {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 26px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: rgba(43, 45, 53, 0.96);
+  box-shadow: var(--shadow);
+}
+
+/* Lay out the task name, date, priority, and add button. */
+#todo-form {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) 150px 140px auto;
+  gap: 10px;
+}
+
+/* Give form fields a shared height, background, and border. */
+#todo-form input,
+#todo-form select {
+  width: 100%;
+  min-width: 0;
+  height: 46px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  outline: none;
+  background: var(--field);
+  color: var(--text);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+/* Use a softer color for the task field placeholder. */
+#todo-input::placeholder {
+  color: #898e9b;
+}
+
+/* Highlight a form field while it is focused. */
+#todo-form input:focus,
+#todo-form select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(162, 147, 255, 0.15);
+}
+
+/* Style the Add task button so it is easy to see. */
+#todo-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 105px;
+  min-height: 46px;
+  padding: 0 17px;
+  border: 0;
+  border-radius: 11px;
+  background: var(--accent);
+  color: #211d38;
+  font-weight: 750;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+/* Add a hover response to the Add task button. */
+#todo-form button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+/* Show keyboard focus clearly on every button. */
+button:focus-visible {
+  outline: 3px solid rgba(162, 147, 255, 0.48);
+  outline-offset: 3px;
+}
+
+/* Arrange the All, Active, and Done filter buttons. */
+#filters {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Give filter buttons a subtle pill shape. */
+#filters button {
+  padding: 8px 14px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: color 150ms ease, background 150ms ease, border-color 150ms ease;
+}
+
+/* Highlight a filter button when the pointer is over it. */
+#filters button:hover {
+  border-color: var(--border);
+  background: var(--panel-raised);
+  color: var(--text);
+}
+
+/* Remove the default list bullets and add spacing above the tasks. */
+#todo-list {
+  display: grid;
+  gap: 10px;
+  margin: 17px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Arrange each task's text and Delete button in a task card. */
+#todo-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 58px;
+  padding: 11px 12px 11px 15px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel-raised);
+  color: var(--text);
+  overflow-wrap: anywhere;
+  animation: task-appear 180ms ease-out;
+}
+
+/* Separate the All-task list into readable month and year groups. */
+#todo-list li.month-heading {
+  min-height: 0;
+  margin-top: 12px;
+  padding: 5px 2px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  animation: none;
+}
+
+/* Animate a task into view when it is added. */
+@keyframes task-appear {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Draw circular status markers for priority and completion. */
+.status-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  flex: 0 0 12px;
+  border-radius: 50%;
+}
+
+/* Color high-priority tasks red. */
+.priority-high {
+  background: #ff4d5e;
+  box-shadow: 0 0 10px rgba(255, 77, 94, 0.35);
+}
+
+/* Color medium-priority tasks yellow. */
+.priority-medium {
+  background: #ffd447;
+  box-shadow: 0 0 10px rgba(255, 212, 71, 0.28);
+}
+
+/* Color low-priority tasks orange. */
+.priority-low {
+  background: #ff963d;
+  box-shadow: 0 0 10px rgba(255, 150, 61, 0.28);
+}
+
+/* Color completed-task markers green. */
+.done-dot {
+  background: #42d392;
+  box-shadow: 0 0 10px rgba(66, 211, 146, 0.35);
+}
+
+/* Let the task description use the remaining row space. */
+.task-details {
+  min-width: 0;
+  flex: 1;
+}
+
+/* Keep the task text readable and wrap long descriptions. */
+.task-title {
+  display: block;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+/* Style the red badge shown beside overdue unfinished tasks. */
+.overdue-badge {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 3px 8px;
+  border: 1px solid rgba(255, 100, 110, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 77, 94, 0.14);
+  color: #ff8992;
+  font-size: 11px;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+/* Fade and cross out completed tasks. */
+#todo-list li.is-complete .task-title {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+/* Style each task's completion button. */
+#todo-list li .done-button {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border: 1px solid #e8eaf0;
+  border-radius: 8px;
+  background: #f4f5f8;
+  color: #292b33;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+/* Give the white completion button a light gray hover state. */
+#todo-list li .done-button:hover {
+  background: #e6e8ee;
+}
+
+/* Keep the button light green with dark readable text when task is complete. */
+#todo-list li.is-complete .done-button {
+  border-color: #9ce8c4;
+  background: #baf2d6;
+  color: #174a34;
+}
+
+/* Slightly deepen the completed button color on hover. */
+#todo-list li.is-complete .done-button:hover {
+  background: #a5eac8;
+}
+
+/* Add a little more separation before the task rows on an empty list too. */
+#todo-list:empty {
+  min-height: 12px;
+}
+
+/* Stack the form controls on narrow phone screens. */
+@media (max-width: 680px) {
+  body {
+    padding: 34px 16px;
+  }
+
+  body > div {
+    padding: 19px;
+  }
+
+  #todo-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #todo-input {
+    grid-column: 1 / -1;
+  }
+
+  #todo-form button {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Reduce animation for people who prefer less motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+.edit-input {
+  width: 100%;
+  padding: 7px 9px;
+  border: 1px solid var(--accent);
+  border-radius: 7px;
+  outline: none;
+  background: var(--field);
+  color: var(--text);
+  font: inherit;
+}
+
+.edit-input:focus {
+  box-shadow: 0 0 0 3px rgba(162, 147, 255, 0.15);
+}
+#charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+
+#charts h2 {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.chart-card {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--panel);
+}
+
+.chart-card h3 {
+  margin: 0 0 16px;
+  font-size: 15px;
+}
+
+/* Align the weekly chart heading with its month navigation arrows. */
+.weekly-chart-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+/* Keep the heading margin inside the navigation row under control. */
+.weekly-chart-heading h3 {
+  margin: 0;
+}
+
+/* Place the triangular month arrows side by side. */
+.month-controls {
+  display: flex;
+  gap: 7px;
+}
+
+/* Style the previous and next month arrow buttons. */
+.month-controls button {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--panel-raised);
+  color: var(--text);
+  font-size: 11px;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+/* Highlight month arrows on hover. */
+.month-controls button:hover:not(:disabled) {
+  background: var(--accent);
+  color: #211d38;
+}
+
+/* Dim the next arrow while the current month is selected. */
+.month-controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.chart-card canvas {
+  width: 100%;
+  max-height: 280px;
+}
+
+@media (max-width: 680px) {
+  #charts {
+    grid-template-columns: 1fr;
+  }
+}
